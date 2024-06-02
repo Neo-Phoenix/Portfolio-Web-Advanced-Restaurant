@@ -2,15 +2,16 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: rgb(28, 42, 66);
 }
 
 body {
-    background-color: aqua;
+    background-color: rgb(248, 248, 248);
 }
 
 nav {
     background-color: aquamarine;
-    
+    display: none;
 }
 
 header {
@@ -20,12 +21,26 @@ header {
     z-index: 1;
 }
 
-header > h1 {
-    background-color: red;
+header > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+header > div > h1 {
+    background-color: red;
+
+}
+
+header > div > img {
+    width: 3rem;
+    padding-right: 1rem;
+}
+
+
 video {
-    margin-top: 8rem;
+    overflow: hidden;
     width: 100%;
 }
 
@@ -35,25 +50,45 @@ h2 {
 
 }
 
-#intro {
+#intro, #intro2 {
     background-image: url("../img/hamburger-494706_1920.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+    min-height: 1vh;
+}
+
+#intro2 {
+    background-image: url("../img/pexels-cottonbro-4253312.jpg");
+    height: 500px;
 }
 
 section {
+    display: flex;
+    place-content: center;
     margin-bottom: 4rem;
     padding: 1rem 0;
 
 }
 
 article {
+
     margin-bottom: 2rem;
     margin: 0 1rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(25px);
     padding: 1rem;
+    width: 100%;
+    max-width: 500px;
+}
 
+img {
+    width: 100%;
+    max-height: 500px;
+}
+
+article>p {
+    font-weight: 500;
+    color: rgb(50,50,50);
 }
 
 
