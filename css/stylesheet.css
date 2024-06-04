@@ -11,6 +11,11 @@ body {
     background-color: rgb(248, 248, 248);
 }
 
+section, footer {
+    padding: 2rem 0;
+}
+
+
 header>nav{
     background-color: rgb(48, 72, 95);
     padding: 0 2rem;
@@ -86,17 +91,17 @@ video~img {
 
 @keyframes bounce {
     0% {
-        bottom: 0;
+        bottom: 2rem;
 
     }
 
     50% {
-        bottom: 50px;
+        bottom: 4rem;
 
     }
 
     100% {
-        bottom: 0;
+        bottom: 2rem;
 
     }
   }
@@ -116,7 +121,7 @@ h2 {
 
 #intro2 {
     background-image: url("../img/pexels-cottonbro-4253312.jpg");
-    height: 500px;
+    height: 100vh;
 }
 
 section{
@@ -130,7 +135,6 @@ article {
     padding: 1rem 2rem;
     backdrop-filter: blur(2rem);
     width: 100%;
-    max-width: 33vw;
 
 }
 
@@ -148,12 +152,22 @@ article p {
     display: flex;
     flex-direction: column;
     place-self: center;
+    place-items: center;
+    width: 100%;
+}
+
+.wrapper * {
+    width: 100%;
+}
+
+.wrapper img {
+    width: auto;
 }
 
 footer {
     display: grid;
-    padding: 4rem;
     background-color: rgb(48, 72, 95);
+    padding: 2rem;
 }
 
 footer ul {
@@ -187,23 +201,52 @@ footer a:hover {
 
 footer a {
     transition: color 1s;
+    margin: 0rem;
+
+}
+
+footer li {
+    margin: 0 2rem;
 }
 
 .copyright {
     font-size: x-small;
-    margin-bottom: 0.5rem;
-}
-
-footer a {
-    margin-bottom: 0rem;
+    margin-bottom: 0.25rem;
 }
 
 footer * {
-    margin-bottom: 1rem;
+    margin: 0.5rem 0;
     text-align: center;
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 1000px) {
+
+    * {
+        letter-spacing: 0.0625rem;
+    }
+
+    h2 {
+        font-size: xx-large;
+        font-weight: 900;
+        padding: 2rem 0;
+    }
+
+    p {
+        font-size: x-large;
+        padding: 1rem 0;
+    }
+
+    article p {
+        font-weight: bold;
+    }
+
+    #intro2 {
+        height: auto;
+    }
+
+    #logo {
+        height: 3rem;
+    }
 
     #hamburgermenu {
         display: none;
@@ -214,6 +257,15 @@ footer * {
         padding: 0;
     }
 
+    article {
+        max-width: 33vw;
+    }
+
+    header div {
+        display: flex;
+        place-content: center;
+    }
+
     header ul {
         display: flex;
         padding: 0;
@@ -221,13 +273,41 @@ footer * {
 
     }
 
-    header li {
-        margin: 0 1rem;
+    header a {
+        padding: 0 1rem;
+        color: white;
+        transition: color 1s;
+    }
+
+    header a:hover {
+        color: azure;
+    }
+
+    .active {
+        border-bottom: 0.25rem solid azure;
+
     }
 
     header li~li {
-        border: none;
+        border-top: 0.25rem solid rgb(48, 72, 95);
+    }
 
+    header li {
+        border-top: 0.25rem solid rgb(48, 72, 95);
+        border-bottom: 0.25rem solid rgb(48, 72, 95);
+        transition: border 1s;
+
+    }
+
+    header li:hover {
+        border-bottom: 0.25rem solid azure;
+        transition: border 1s;
+    }
+
+    nav li {
+        display: flex;
+        place-self: center;
+        padding: 0.5rem 1rem;
     }
 
     .wrapper {
@@ -237,7 +317,36 @@ footer * {
         width: 50vw;
     }
 
+    .copyright {
+        padding: 0;
+        margin: 0;
+        font-size: medium;
+    }
+
+    .wrapper nav{
+        max-width: 33vw;
+    }
+
     section {
-        padding: 25vh 0;
+        padding: 50vh 0;
+    }
+
+    section .text {
+        padding: 12.5vh 0;
+    }
+
+    video~img {
+        width: 7.5rem;
+    }
+
+
+
+    footer {
+        padding: 4rem;
+    }
+
+    .wrapper img {
+        width: 50%;
+        max-height: 100%;
     }
 }
