@@ -3,14 +3,17 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(28, 42, 66);
+    list-style-type: none;
+    text-decoration: none;
 }
 
 body {
     background-color: rgb(248, 248, 248);
 }
 
-nav {
-    background-color: aquamarine;
+header>nav{
+    background-color: rgb(48, 72, 95);
+    padding: 0 2rem;
     display: none;
 }
 
@@ -28,14 +31,34 @@ header > div {
     align-items: center;
 }
 
-header > div > h1 {
-    background-color: red;
+header > nav > ul {
+    padding: 1.5rem 0;
+}
 
+header > nav > ul > li {
+    padding: 0.5rem 0;
+    color: white;
+    letter-spacing: 0.125rem;
+}
+
+header > nav > ul > li~li {
+    border-top: 1px solid white;
+}
+
+header > div > h1 {
+    font-size: x-large;
+    padding: 0.5rem 1rem;
 }
 
 header > div > img {
-    width: 3rem;
+    width: 2rem;
     padding-right: 1rem;
+}
+
+#logo {
+    width: auto;
+    height: 2rem;
+    padding: 1rem;
 }
 
 
@@ -63,12 +86,15 @@ h2 {
     height: 500px;
 }
 
-section {
+section{
     display: flex;
     place-content: center;
-    margin-bottom: 4rem;
-    padding: 1rem 0;
+    padding: 3rem 0;
 
+}
+
+section~section {
+    margin-top: 4rem;
 }
 
 article {
@@ -91,4 +117,53 @@ article>p {
     color: rgb(50,50,50);
 }
 
+footer {
+    display: grid;
 
+    padding: 4rem;
+    background-color: rgb(48, 72, 95);
+}
+
+footer > nav > ul {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    
+    padding: 1.5rem 0;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+
+}
+
+footer > img {
+    place-self: center;
+    width: auto;
+    max-height: 8rem;
+    margin-bottom: 4rem;
+}
+
+footer > p, nav > ul > li > a, footer > p > a, footer > a > p {
+    color: white;
+    font-size: large;
+}
+
+footer > nav > ul > li > a:hover {
+    color: black;
+    transition: 1s;
+}
+
+footer > nav > ul > li > a {
+    color: white;
+    transition: color 1s;
+}
+
+.copyright {
+    font-size: x-small;
+    margin-bottom: 0.5rem;
+}
+
+footer > * {
+    margin-bottom: 1rem;
+    text-align: center;
+}
