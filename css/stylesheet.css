@@ -78,18 +78,18 @@ header img {
     place-content: center;
 }
 
-.gallery {
+.gallerySection {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     padding: 0;
 }
 
-.gallery article {
+.gallerySection article {
     width: auto;
 }
 
-.gallery img{
+.gallerySection img{
     height: 25vh;
     object-fit: cover;
 }
@@ -196,6 +196,33 @@ h3 {
     background-image: url("../img/pexels-robinstickel-70497.jpg");
 }
 
+#about-us #about-us-picture {
+    background-image: url("../img/pexels-yelenaodintsova-15638789.jpg");
+}
+
+#about-us form {
+    display: grid;
+    row-gap: 0.5rem;
+    margin: 1rem 0
+}
+
+#about-us input, textarea {
+    border-radius: 0.25em;
+    padding: 1rem;
+
+}
+
+#about-us textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+#about-us #about-us-form{
+    padding: 0;
+    margin-bottom: 8rem;
+}
+
+
 #intro2 {
     background-image: url("../img/pexels-cottonbro-4253312.jpg");
     height: 100vh;
@@ -228,8 +255,6 @@ img {
     display: block;
     margin-bottom: 1rem;
 }
-
-
 
 article p {
     font-weight: 500;
@@ -314,7 +339,7 @@ footer * {
     padding: 1rem 0;
 }
 
-#menus #galleryintro, #menus .gallery {
+#menus #galleryintro, #menus .gallerySection {
     padding: inherit;
 }
 
@@ -459,7 +484,7 @@ footer * {
         max-height: 100%;
     }
 
-    .gallery img{
+    .gallerySection img{
         height: 100vh;
         max-height: 100%;
     }
@@ -474,25 +499,25 @@ footer * {
         padding: 2rem;
     }
 
-    .gallery {
+    .gallerySection {
         display: flex;
         padding: 0;
         place-items: center;
     }
 
-    .gallery article {
+    .gallerySection article {
         width: 50vw;
         display: flex;
         padding: 2rem 0;
     }
 
-    .gallery h2 {
+    .gallerySection h2 {
         display: flex;
         place-content: center;
         width: 100%;
     }
 
-    .gallery .container {
+    .gallerySection .container {
         height: 75vh;
     }
 

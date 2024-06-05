@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="..\css\stylesheet.css">
     <script src="..\scripts\script.js" defer></script>
 </head>
-<body>
+<body id="about-us">
     <header>
         <div>
             <img id="logo" src="../img/logoflat.png" alt="Restaurant Ristorante">
@@ -27,7 +27,33 @@
         </nav>
     </header>
     
+    <section id="galleryintro">
+        <div class="container">
+            <img id="about-us-picture">
+        </div>
+    </section>   
 
+    <section class="gallerySection">
+        <article class="spacer">
+            <h2>About Us</h2>
+        </article>
+    </section>
+
+    <section id="about-us-form">
+        <article>
+            <form>
+
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" placeholder="Your e-mail..">
+            
+                <label for="question">Question</label>
+                <textarea id="question" name="question" placeholder="Enter text"></textarea>
+            
+                <input type="button" value="Submit">
+            
+              </form>
+        </article>
+    </section>
     
     <footer>
         <div class="wrapper">
