@@ -35,13 +35,17 @@ window.onload = () => {
     const spreadOperatorTest = [cnext, cprevious, gallerypic, ...galleryUrls];
     console.log(spreadOperatorTest)
 
-    cnext.addEventListener('click', () => {
-        galleryControls("next")
-    })
+    if (cnext) {
+        cnext.addEventListener('click', () => {
+            galleryControls("next")
+        })
+    }
 
-    cprevious.addEventListener('click', () => {
-        galleryControls("previous")
-    })
+    if(cprevious) {
+        cprevious.addEventListener('click', () => {
+            galleryControls("previous")
+        })
+    }
     let i = 0
     //Iteratie over een array van urls voor de gallery
     function galleryControls(direction, ...nuttelozeArgumentenOpgevangenDoorRestOperator) {

@@ -187,6 +187,10 @@ h2 {
 
 }
 
+#galleryintro .container #order-online-picture {
+    background-image: url("../img/pexels-robinstickel-70497.jpg");
+}
+
 #intro2 {
     background-image: url("../img/pexels-cottonbro-4253312.jpg");
     height: 100vh;
