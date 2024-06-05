@@ -66,12 +66,27 @@ header img {
     padding: 1rem;
 }
 
-.container {
+.container, .containerhalf {
     max-width: 100vw;
     overflow: hidden;
     height: 100vh;
     display: flex;
     place-content: center;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.gallery article {
+    width: auto;
+}
+
+.gallery img{
+    height: 25vh;
+    object-fit: cover;
 }
 
 video {
@@ -109,14 +124,37 @@ video~img {
 h2 {
     border-bottom: 1px solid red;
     margin-bottom: 1rem;
-
+    color: rgb(28, 42, 100);
 }
 
-#intro, #intro2 {
+.text article {
+    backdrop-filter: none;
+}
+
+.text article p {
+    color: rgb(28, 42, 66);
+}
+
+#intro, #intro2, #galleryintro .container img {
     background-image: url("../img/hamburger-494706_1920.jpg");
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+}
+
+#galleryintro .container img {
+    background-image: url("../img/pexels-chevanon-323682.jpg");
+    background-position: center;
+    max-height: 100%;
+    transform: translate(0, -5rem);
+
+}
+
+#galleryintro {
+    display: block;
+    overflow: hidden;
+    height: 75vh;
+    padding: 0;
 }
 
 #intro2 {
@@ -133,9 +171,12 @@ section{
 
 article {
     padding: 1rem 2rem;
-    backdrop-filter: blur(2rem);
+    backdrop-filter: blur(2rem) brightness(66.66%);
     width: 100%;
+}
 
+.spacer {
+    backdrop-filter: none;
 }
 
 img {
@@ -145,7 +186,7 @@ img {
 
 article p {
     font-weight: 500;
-    color: rgb(50,50,50);
+    color: white;
 }
 
 .wrapper {
@@ -168,6 +209,7 @@ footer {
     display: grid;
     background-color: rgb(48, 72, 95);
     padding: 2rem;
+    height: 100vh;
 }
 
 footer ul {
@@ -348,5 +390,45 @@ footer * {
     .wrapper img {
         width: 50%;
         max-height: 100%;
+    }
+
+    .gallery img{
+        height: 100vh;
+        max-height: 100%;
+    }
+
+    .gallerywrapper article {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -80%);
+        display: flex;
+        place-content: center;
+    }
+
+    .gallery {
+        display: flex;
+        padding: 0;
+        place-items: center;
+    }
+
+    .gallery article {
+        width: 50vw;
+        display: flex;
+    }
+
+    .gallery h2 {
+        display: flex;
+        place-content: center;
+        width: 100%;
+    }
+
+    .gallery .container {
+        height: 75vh;
+    }
+
+    .gallerywrapper {
+        position: relative;
+        width: 100%;
     }
 }
