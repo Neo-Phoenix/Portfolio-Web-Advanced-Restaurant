@@ -37,15 +37,31 @@ window.onload = () => {
     let i = 0
     function galleryControls(direction) {
         if (direction === "next") {
-            console.log("next")
+            console.log("next i before" + i)
             console.log(galleryUrls[i])
-            i++
+
+            if (i >= galleryUrls.length-1) {
+                i = 0;
+            } else {
+                i++;
+            }
+            console.log("next i current" + i)
+
             gallerypic.style.backgroundImage = galleryUrls[i]
+            gallerypic.style.transition = "0.25s"
         } else if (direction === "previous"){
-            console.log("previous")
+            console.log("previous i before:" + i)
             console.log(galleryUrls[i])
-            i--
+            if (i <= 0) {
+                i = galleryUrls.length-1;
+            } else {
+                i--;
+            }
+            console.log("next i current" + i)
+
             gallerypic.style.backgroundImage = galleryUrls[i]
+            gallerypic.style.transition = "0.25s"
+
         }
     }
 }
