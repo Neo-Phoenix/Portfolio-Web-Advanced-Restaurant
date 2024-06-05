@@ -169,7 +169,7 @@ h2 {
     background-image: url(../img/arrow-icon-1182.png);
     background-position: center;
     background-size: cover;
-    top: 50%;
+    top: 80%;
     width: 4rem;
     height: 4rem;
     z-index: 0;
@@ -177,7 +177,7 @@ h2 {
 
 #galleryintro #cnext {
     transform: rotate(90deg);
-    right: 2rem;
+    right: 2em;
 
 }
 
@@ -427,6 +427,10 @@ footer * {
 
     footer {
         padding: 4rem;
+    }
+
+    #galleryintro #cnext, #galleryintro #cprevious {
+        top: 50%;
     }
 
     .wrapper img {

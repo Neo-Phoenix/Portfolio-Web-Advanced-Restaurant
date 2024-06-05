@@ -12,9 +12,7 @@ ico.addEventListener('click', () => {
 window.onload = () => {
     console.log("helloworld.")
 
-    const cnext = document.getElementById('cnext')
-    const cprevious = document.getElementById('cprevious')
-    const gallerypic = document.getElementById('gallerypicture')
+    const [cnext, cprevious, gallerypic] = [document.getElementById('cnext'), document.getElementById('cprevious'),document.getElementById('gallerypicture')]
     const galleryUrls = [
         "url(../img/pexels-chevanon-323682.jpg)",
         "url(../img/pexels-dana-tentis-118658-262959.jpg)",
