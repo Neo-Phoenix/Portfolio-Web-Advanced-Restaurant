@@ -126,12 +126,17 @@ video~img {
     }
   }
 
-h2 {
+h2, h3{
     border-bottom: 1px solid red;
     margin-bottom: 1rem;
     color: rgb(28, 42, 100);
     text-align: center;
 
+}
+
+h3 {
+    border: none;
+    color: rgb(48, 62, 119);
 }
 
 .text article {
@@ -303,6 +308,18 @@ footer li {
 footer * {
     margin: 0.5rem 0;
     text-align: center;
+}
+
+#menus section {
+    padding: 1rem 0;
+}
+
+#menus #galleryintro, #menus .gallery {
+    padding: inherit;
+}
+
+#menus section p {
+    margin-bottom: 2.5rem;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -482,5 +499,24 @@ footer * {
     .gallerywrapper {
         position: relative;
         width: 100%;
+    }
+
+    #menus #menuwrapper {
+        margin: 4rem 8rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 4rem;
+    }
+
+    #menus #menuwrapper section {
+        padding: 0;
+        transition: transform 1s;
+
+    }
+
+    #menus #menuwrapper section:hover {
+        transform: scale(1.05);
+        transition: transform 1s;
+        z-index: 0;
     }
 }
