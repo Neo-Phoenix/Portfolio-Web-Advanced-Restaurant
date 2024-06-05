@@ -1,6 +1,7 @@
 let ico = document.getElementById('hamburgermenu');
 let nav = document.getElementsByTagName('nav')[0];
 
+//addEventListener is een consumer method want eventlistener methods van js zijn volgens het observer patroon er één
 ico.addEventListener('click', () => {
     if (nav.style.display !== 'block') {
         nav.style.display = 'block';
@@ -12,7 +13,12 @@ ico.addEventListener('click', () => {
 window.onload = () => {
     console.log("helloworld.")
 
-    const [cnext, cprevious, gallerypic] = [document.getElementById('cnext'), document.getElementById('cprevious'),document.getElementById('gallerypicture')]
+    // Array destructuring assignment van variabelen
+    const [cnext, cprevious, gallerypic] = [
+        document.getElementById('cnext'), 
+        document.getElementById('cprevious'),
+        document.getElementById('gallerypicture')
+]
     const galleryUrls = [
         "url(../img/pexels-chevanon-323682.jpg)",
         "url(../img/pexels-dana-tentis-118658-262959.jpg)",
@@ -25,6 +31,10 @@ window.onload = () => {
         "url(../img/pexels-willpicturethis-2641886.jpg)"
     ]
 
+    //spread operator voegt "cnext, cprevious, gallerypic" samen met de inhoud van gallerUrls
+    const spreadOperatorTest = [cnext, cprevious, gallerypic, ...galleryUrls];
+    console.log(spreadOperatorTest)
+
     cnext.addEventListener('click', () => {
         galleryControls("next")
     })
@@ -33,7 +43,8 @@ window.onload = () => {
         galleryControls("previous")
     })
     let i = 0
-    function galleryControls(direction) {
+    //Iteratie over een array van urls voor de gallery
+    function galleryControls(direction, ...nuttelozeArgumentenOpgevangenDoorRestOperator) {
         if (direction === "next") {
             console.log("next i before" + i)
             console.log(galleryUrls[i])
@@ -59,7 +70,20 @@ window.onload = () => {
 
             gallerypic.style.backgroundImage = galleryUrls[i]
             gallerypic.style.transition = "0.25s"
-
+        }
+        if (nuttelozeArgumentenOpgevangenDoorRestOperator != "") {
+            //rest operator vangt extra argumenten op en logged ze in console
+            console.log(nuttelozeArgumentenOpgevangenDoorRestOperator)
         }
     }
+
+    //verwachte output van galleryControls(1,2,'test',4,5,6) is een array [2,'test',4,5,6] in console log
+    galleryControls(1,2,'test',4,5,6)
+
+    //verwachte output van galleryControls(1) is niets in console log
+    galleryControls(1)
+
+    //verwachte output van galleryControls(1) is een array van [2] in console log
+    galleryControls(1,2)
+
 }
