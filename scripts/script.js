@@ -93,7 +93,29 @@ window.onload = () => {
         //verwachte output van galleryControls(1) is een array van [2] in console log
         galleryControls(1,2)
     }
+
+
     else if (currentPage === "about-us") {
         console.log("test")
+        const button = document.getElementById("formsubmit")
+        const email = document.getElementById("email")
+
+        button.addEventListener('click', validateForm)
+        function validateForm() {
+            console.log("validateForm clicked")
+            let emailvalue = email.value;
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            console.log(emailvalue)
+            console.log(emailRegex.test(emailvalue))
+            if (emailvalue == "") {
+                email.style = "border: 0.25rem solid orange;";
+                alert("An email adres is required.");
+            }
+
+            else if (!emailRegex.test(emailvalue)) {
+                email.style = "border: 0.25rem solid orange;";
+                alert("The email adres must be a valid format.");
+            }
+          }
     }
 }
