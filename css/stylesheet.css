@@ -60,10 +60,12 @@ header img {
     padding-right: 1rem;
 }
 
-#logo {
+#logo, #hamburgermenu {
     width: auto;
     height: 2rem;
     padding: 1rem;
+    margin: 0;
+
 }
 
 .container, .containerhalf {
@@ -78,6 +80,7 @@ header img {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    padding: 0;
 }
 
 .gallery article {
@@ -125,6 +128,8 @@ h2 {
     border-bottom: 1px solid red;
     margin-bottom: 1rem;
     color: rgb(28, 42, 100);
+    text-align: center;
+
 }
 
 .text article {
@@ -179,14 +184,24 @@ article {
     backdrop-filter: none;
 }
 
+.spacer h2 {
+    margin: 0;
+}
+
 img {
     width: 100%;
     max-height: 500px;
+    display: block;
+    margin-bottom: 1rem;
 }
+
+
 
 article p {
     font-weight: 500;
     color: white;
+    padding: 0 2rem;
+    text-align: center;
 }
 
 .wrapper {
@@ -381,7 +396,9 @@ footer * {
         width: 7.5rem;
     }
 
-
+    img {
+        margin-bottom: 3rem;
+    }
 
     footer {
         padding: 4rem;
@@ -404,6 +421,7 @@ footer * {
         transform: translate(-50%, -80%);
         display: flex;
         place-content: center;
+        padding: 2rem;
     }
 
     .gallery {
@@ -415,6 +433,7 @@ footer * {
     .gallery article {
         width: 50vw;
         display: flex;
+        padding: 2rem 0;
     }
 
     .gallery h2 {
