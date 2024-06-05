@@ -11,4 +11,23 @@ ico.addEventListener('click', () => {
 
 window.onload = () => {
     console.log("helloworld.")
+
+    const cnext = document.getElementById('cnext')
+    const cprevious = document.getElementById('cprevious')
+
+    cnext.addEventListener('click', () => {
+        galleryControls("next")
+    })
+
+    cprevious.addEventListener('click', () => {
+        galleryControls("previous")
+    })
+
+    function galleryControls(direction) {
+        if (direction === "next") {
+            console.log("next")
+        } else if (direction === "previous"){
+            console.log("previous")
+        }
+    }
 }
