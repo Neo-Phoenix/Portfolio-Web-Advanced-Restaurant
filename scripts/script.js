@@ -70,7 +70,7 @@
                 //console.log(data.list[i].weather[0].description)
 
                 //check of de dag hetzelfde is, simultaan of dat het uur hoger is dan huidig uur, en totaal maar 3 keer dit zal doen (voor de komende 3 weerberichten)
-                if (dateDay===currentdate.getDate() && dateHour>=currentdate.getHours() && counter < 3) {
+                if (dateDay===currentdate.getDate() && dateHour>currentdate.getHours() && counter < 3) {
                 //console.log(dateDay)
                 //console.log(currentdate.getDate())
                 console.log(dateHour)
