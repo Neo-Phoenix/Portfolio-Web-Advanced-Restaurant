@@ -221,7 +221,6 @@ h3 {
 }
 
 #location iframe{
-    padding-top: 4rem;
     width: 100%;
 }
 
@@ -348,6 +347,12 @@ footer * {
 
 #menus section p {
     margin-bottom: 2.5rem;
+}
+
+#location #weermessage {
+    padding: 2rem;
+    padding-top: 5rem;
+    background: beige;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -562,5 +567,13 @@ footer * {
         display: block;
         padding-top: 8rem;
         height: calc(100vh - 8rem);
+    }
+
+    #location #weermessage {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: 4rem;
+    
     }
 }
