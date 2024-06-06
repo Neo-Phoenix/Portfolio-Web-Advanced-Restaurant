@@ -7,8 +7,24 @@
     if(!localStorage.getItem("epochTime")) {
         localStorage.setItem("epochTime", epochTime)
         apicall()
-
     } else {
+        weather()
+    }
+
+    //async function apicall
+    async function apicall() {
+        //https://openweathermap.org/forecast5
+        let apiCall = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
+        let apiJson = await apiCall.json()
+
+        //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
+        localStorage.setItem("apiJson", JSON.stringify(apiJson))
+        console.log(apiJson)
+        weather()
+    }
+
+    
+    function weather() {
         console.log("found old epochTime stamp: "+localStorage.getItem("epochTime"))
         let oldEpochTime = localStorage.getItem("epochTime")
         let currentEpochTime = Date.now()
@@ -41,6 +57,9 @@
             //console.log(currentdate.getDate())
             let counter = 0
             for (let i = 0; i < data.list.length; i++) {
+                if (counter === 3) {
+                    break
+                }
                 //console.log(data.list[i]);
                 //zet UTC om naar Date object
                 let currentIdate = new Date(data.list[i].dt_txt)
@@ -51,7 +70,7 @@
                 //console.log(data.list[i].weather[0].description)
 
                 //check of de dag hetzelfde is, simultaan of dat het uur hoger is dan huidig uur, en totaal maar 3 keer dit zal doen (voor de komende 3 weerberichten)
-                if (dateDay===currentdate.getDate() && dateHour>currentdate.getHours() && counter < 3) {
+                if (dateDay===currentdate.getDate() && dateHour>=currentdate.getHours() && counter < 3) {
                 //console.log(dateDay)
                 //console.log(currentdate.getDate())
                 console.log(dateHour)
@@ -69,18 +88,7 @@
             }
 
         }
-    }
-
-    //async function apicall
-    async function apicall() {
-        //https://openweathermap.org/forecast5
-        let apiCall = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
-        let apiJson = await apiCall.json()
-
-        //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
-        localStorage.setItem("apiJson", JSON.stringify(apiJson))
-        console.log(apiJson)
-    }
+    } 
 
 })()
 
