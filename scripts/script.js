@@ -6,8 +6,6 @@
     //indien er geen historiek is start api call en cooldown timer
     if(!localStorage.getItem("epochTime")) {
         localStorage.setItem("epochTime", epochTime)
-        //indien geen cooldowntimer, start nieuwe api call
-        //console.log(localStorage.getItem("epochTime"))
         apicall()
 
     } else {
@@ -31,7 +29,11 @@
             data = JSON.parse(localStorage.getItem("apiJson"))
             //access de lijst voor de komende 3 uur, 3 keer
             for (let i = 0; i < 3; i++) {
-                console.log(data.list[i]);
+                //console.log(data.list[i]);
+                
+                console.log(data.list[i].dt_txt)
+                console.log(data.list[i].main.temp)
+                console.log(data.list[i].weather[0].description)
             }
         }
     }
