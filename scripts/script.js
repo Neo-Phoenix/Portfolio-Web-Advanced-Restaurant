@@ -1,9 +1,52 @@
-//self executing function als async arrow function
-(async () => {
-    let apiCall = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1')
-    let apiJson = await apiCall.json()
+//self executing function als arrow function
+(() => {
+    let epochTime = Date.now()
+    //console.log(UTCTimeStamp)
 
-    console.log(apiJson)
+    //indien er geen historiek is start api call en cooldown timer
+    if(!localStorage.getItem("epochTime")) {
+        localStorage.setItem("epochTime", epochTime)
+        //indien geen cooldowntimer, start nieuwe api call
+        //console.log(localStorage.getItem("epochTime"))
+        apicall()
+
+    } else {
+        console.log("found old epochTime stamp: "+localStorage.getItem("epochTime"))
+        let oldEpochTime = localStorage.getItem("epochTime")
+        let currentEpochTime = Date.now()
+
+        let differenceEpochTime = currentEpochTime-oldEpochTime
+        
+        //milliseconden naar minuten conversie
+        let PassedTimeMsToMin = differenceEpochTime / 1000 / 60
+        //console.log(`Current epochtime - old epochtime = time past, ${currentEpochTime} - ${oldEpochTime} = ${differenceEpochTime} aka ${PassedTimeMsToMin} minutes`)
+        //cooldowntimer voor apicalls
+        if (PassedTimeMsToMin>=15) {
+            localStorage.setItem("epochTime", epochTime)
+            apicall()
+        } else {
+            console.log(`api call nog op cooldown timer: ${PassedTimeMsToMin}/15minuten`)
+
+            //JSON parse de gestringified data zie comment hieronder over JSON.stringify
+            data = JSON.parse(localStorage.getItem("apiJson"))
+            //access de lijst voor de komende 3 uur, 3 keer
+            for (let i = 0; i < 3; i++) {
+                console.log(data.list[i]);
+            }
+        }
+    }
+
+    //async function apicall
+    async function apicall() {
+        //https://openweathermap.org/forecast5
+        let apiCall = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
+        let apiJson = await apiCall.json()
+
+        //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
+        localStorage.setItem("apiJson", JSON.stringify(apiJson))
+        console.log(apiJson)
+    }
+
 })()
 
 
