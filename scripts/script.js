@@ -38,17 +38,22 @@ window.onload = () => {
         const spreadOperatorTest = [cnext, cprevious, gallerypic, ...galleryUrls];
         console.log(spreadOperatorTest)
 
+        //de arrow function is technisch de callback functie in dit geval
         if (cnext) {
             cnext.addEventListener('click', () => {
                 galleryControls("next")
             })
         }
 
+        //de "callbackAlternatief" is de callback functie
         if(cprevious) {
-            cprevious.addEventListener('click', () => {
-                galleryControls("previous")
-            })
+            cprevious.addEventListener('click', callbackAlternatief)
         }
+
+        function callbackAlternatief() {
+            galleryControls("previous")
+        }
+
         let i = 0
         //Iteratie over een array van urls voor de gallery
         function galleryControls(direction, ...nuttelozeArgumentenOpgevangenDoorRestOperator) {
@@ -99,22 +104,28 @@ window.onload = () => {
         console.log("test")
         const button = document.getElementById("formsubmit")
         const email = document.getElementById("email")
+        const name = document.getElementById("name")
+
 
         button.addEventListener('click', validateForm)
         function validateForm() {
             console.log("validateForm clicked")
             let emailvalue = email.value;
+            let namevalue = name.value;
+
             const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
             console.log(emailvalue)
             console.log(emailRegex.test(emailvalue))
+
+            //template literals
             if (emailvalue == "") {
                 email.style = "border: 0.25rem solid orange;";
-                alert("An email adres is required.");
+                    alert(`An email adres is required. ${namevalue}.`);
             }
-
             else if (!emailRegex.test(emailvalue)) {
                 email.style = "border: 0.25rem solid orange;";
-                alert("The email adres must be a valid format.");
+                    alert(`The email adres must be a valid format ${namevalue}.`);
             }
           }
     }
