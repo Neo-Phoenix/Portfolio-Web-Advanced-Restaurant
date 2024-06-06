@@ -32,26 +32,40 @@
 
             //JSON parse de gestringified data zie comment hieronder over JSON.stringify
             data = JSON.parse(localStorage.getItem("apiJson"))
+            console.log(data.list)
             //access de lijst voor de komende 3 uur, 3 keer
-            for (let i = 0; i < 3; i++) {
+
+            console.log(data.list.length)
+
+            let currentdate = new Date()
+            //console.log(currentdate.getDate())
+            let counter = 0
+            for (let i = 0; i < data.list.length; i++) {
                 //console.log(data.list[i]);
                 //zet UTC om naar Date object
-                let currentdate = new Date(data.list[i].dt_txt)
-                let dateHour = currentdate.getHours()
+                let currentIdate = new Date(data.list[i].dt_txt)
+                let dateHour = currentIdate.getHours()
+                let dateDay = currentIdate.getDate()
                 let wdesc = data.list[i].weather[0].description
-                console.log(dateHour)
-                console.log(data.list[i].main.temp)
-                console.log(data.list[i].weather[0].description)
-                console.log(data.list[i])
+                //console.log(data.list[i].main.temp)
+                //console.log(data.list[i].weather[0].description)
 
-                if (data.list[i]) {
+                //check of de dag hetzelfde is, simultaan of dat het uur hoger is dan huidig uur, en totaal maar 3 keer dit zal doen (voor de komende 3 weerberichten)
+                if (dateDay===currentdate.getDate() && dateHour>currentdate.getHours() && counter < 3) {
+                //console.log(dateDay)
+                //console.log(currentdate.getDate())
+                console.log(dateHour)
+                console.log(currentdate.getHours())
+
                     const ptag = document.createElement("p");
 
 
                     ptag.innerText = `At ${dateHour} 'o clock today the weather will have ${wdesc}`
 
                     weerDiv.appendChild(ptag)
+                    counter++
                 }
+
             }
 
         }
