@@ -23,6 +23,11 @@
             localStorage.setItem("epochTime", epochTime)
             apicall()
         } else {
+            const weerDiv = document.getElementById("weermessage");                    
+            const ptagh2 = document.createElement("h2")
+            ptagh2.innerText = "Weather Notice"
+            weerDiv.appendChild(ptagh2)
+            
             console.log(`api call nog op cooldown timer: ${PassedTimeMsToMin}/15minuten`)
 
             //JSON parse de gestringified data zie comment hieronder over JSON.stringify
@@ -30,11 +35,25 @@
             //access de lijst voor de komende 3 uur, 3 keer
             for (let i = 0; i < 3; i++) {
                 //console.log(data.list[i]);
-                
-                console.log(data.list[i].dt_txt)
+                //zet UTC om naar Date object
+                let currentdate = new Date(data.list[i].dt_txt)
+                let dateHour = currentdate.getHours()
+                let wdesc = data.list[i].weather[0].description
+                console.log(dateHour)
                 console.log(data.list[i].main.temp)
                 console.log(data.list[i].weather[0].description)
+                console.log(data.list[i])
+
+                if (data.list[i]) {
+                    const ptag = document.createElement("p");
+
+
+                    ptag.innerText = `At ${dateHour} 'o clock today the weather will have ${wdesc}`
+
+                    weerDiv.appendChild(ptag)
+                }
             }
+
         }
     }
 
@@ -65,10 +84,10 @@ ico.addEventListener('click', () => {
 });
 
 window.onload = () => {
-    console.log("helloworld.")
+    //console.log("helloworld.")
     const currentPage = document.getElementsByTagName('body')[0].id
+    //console.log(currentPage)
 
-    console.log(currentPage)
     if(currentPage === "gallery") {
         // Array destructuring assignment van variabelen
         const [cnext, cprevious, gallerypic] = [
