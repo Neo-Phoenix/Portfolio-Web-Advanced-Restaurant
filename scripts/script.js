@@ -1,3 +1,12 @@
+//self executing function als async arrow function
+(async () => {
+    let apiCall = await fetch('https://api.openweathermap.org/data/2.5/weather?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1')
+    let apiJson = await apiCall.json()
+
+    console.log(apiJson)
+})()
+
+
 let ico = document.getElementById('hamburgermenu');
 let nav = document.getElementsByTagName('nav')[0];
 
