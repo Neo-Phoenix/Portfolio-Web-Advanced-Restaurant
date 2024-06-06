@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Ristorante | About Us</title>
-    <link rel="icon" type="image/x-icon" href="/img/restaurant.png">
-    <link rel="stylesheet" href="..\css\stylesheet.css">
-    <script src="..\scripts\script.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="../img/restaurant.png">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <script src="../scripts/script.js" defer></script>
 </head>
-<body>
+<body id="about-us">
     <header>
         <div>
             <img id="logo" src="../img/logoflat.png" alt="Restaurant Ristorante">
@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menus.html">Menus</a></li>
-                <li><a href="locations.html">Locations</a></li>
+                <li><a href="location.html">Location</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="reservations.html">Reservations</a></li>
                 <li><a href="order-online.html">Order Online</a></li>
@@ -27,7 +27,36 @@
         </nav>
     </header>
     
+    <section id="galleryintro">
+        <div class="container">
+            <img id="about-us-picture">
+        </div>
+    </section>   
 
+    <section class="gallerySection">
+        <article class="spacer">
+            <h2>About Us</h2>
+        </article>
+    </section>
+
+    <section id="about-us-form">
+        <article>
+            <form>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter name">
+            
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="email" placeholder="Enter email">
+
+                <label for="question">Question</label>
+                <textarea id="question" name="question" placeholder="Enter text"></textarea>
+            
+                <input type="button" value="Submit" id="formsubmit">
+            
+              </form>
+        </article>
+    </section>
     
     <footer>
         <div class="wrapper">
