@@ -42,49 +42,50 @@
             const weerDiv = document.getElementById("weermessage");                    
             const ptagh2 = document.createElement("h2")
             ptagh2.innerText = "Weather Notice"
-            weerDiv.appendChild(ptagh2)
-            
-            console.log(`api call nog op cooldown timer: ${PassedTimeMsToMin}/15minuten`)
+            if(weerDiv) {
+                weerDiv.appendChild(ptagh2)
+                
+                console.log(`api call nog op cooldown timer: ${PassedTimeMsToMin}/15minuten`)
 
-            //JSON parse de gestringified data zie comment hieronder over JSON.stringify
-            data = JSON.parse(localStorage.getItem("apiJson"))
-            console.log(data.list)
-            //access de lijst voor de komende 3 uur, 3 keer
+                //JSON parse de gestringified data zie comment hieronder over JSON.stringify
+                data = JSON.parse(localStorage.getItem("apiJson"))
+                console.log(data.list)
+                //access de lijst voor de komende 3 uur, 3 keer
 
-            console.log(data.list.length)
+                console.log(data.list.length)
 
-            let currentdate = new Date()
-            //console.log(currentdate.getDate())
-            let counter = 0
-            for (let i = 0; i < data.list.length; i++) {
-                if (counter === 3) {
-                    break
-                }
-                //console.log(data.list[i]);
-                //zet UTC om naar Date object
-                let currentIdate = new Date(data.list[i].dt_txt)
-                let dateHour = currentIdate.getHours()
-                let dateDay = currentIdate.getDate()
-                let wdesc = data.list[i].weather[0].description
-                //console.log(data.list[i].main.temp)
-                //console.log(data.list[i].weather[0].description)
-
-                //check of de dag hetzelfde is, simultaan of dat het uur hoger is dan huidig uur, en totaal maar 3 keer dit zal doen (voor de komende 3 weerberichten)
-                if (dateDay===currentdate.getDate() && dateHour>currentdate.getHours() && counter < 3) {
-                //console.log(dateDay)
+                let currentdate = new Date()
                 //console.log(currentdate.getDate())
-                console.log(dateHour)
-                console.log(currentdate.getHours())
+                let counter = 0
+                for (let i = 0; i < data.list.length; i++) {
+                    if (counter === 3) {
+                        break
+                    }
+                    //console.log(data.list[i]);
+                    //zet UTC om naar Date object
+                    let currentIdate = new Date(data.list[i].dt_txt)
+                    let dateHour = currentIdate.getHours()
+                    let dateDay = currentIdate.getDate()
+                    let wdesc = data.list[i].weather[0].description
+                    //console.log(data.list[i].main.temp)
+                    //console.log(data.list[i].weather[0].description)
 
-                    const ptag = document.createElement("p");
+                    //check of de dag hetzelfde is, simultaan of dat het uur hoger is dan huidig uur, en totaal maar 3 keer dit zal doen (voor de komende 3 weerberichten)
+                    if (dateDay===currentdate.getDate() && dateHour>currentdate.getHours() && counter < 3) {
+                    //console.log(dateDay)
+                    //console.log(currentdate.getDate())
+                    console.log(dateHour)
+                    console.log(currentdate.getHours())
+
+                        const ptag = document.createElement("p");
 
 
-                    ptag.innerText = `At ${dateHour} 'o clock today the weather will have ${wdesc}`
+                        ptag.innerText = `At ${dateHour} 'o clock today the weather will have ${wdesc}`
 
-                    weerDiv.appendChild(ptag)
-                    counter++
+                        weerDiv.appendChild(ptag)
+                        counter++
+                    }
                 }
-
             }
 
         }
