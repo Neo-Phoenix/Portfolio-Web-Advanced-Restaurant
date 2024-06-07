@@ -58,41 +58,49 @@ ico.addEventListener('click', () => {
 ### 4. Formulier valideren
 Valideren van de e-mailinvoer van een formulier en feedback geven aan de gebruiker.
 ```javascript
-button.addEventListener('click', validateForm);
-function validateForm() {
-    let emailvalue = email.value;
-    let namevalue = name.value;
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (emailvalue == "") {
-        email.style = "border: 0.25rem solid orange;";
-        alert(`Een e-mailadres is vereist, ${namevalue}.`);
-    } else if (!emailRegex.test(emailvalue)) {
-        email.style = "border: 0.25rem solid orange;";
-        alert(`Het e-mailadres moet een geldig formaat hebben, ${namevalue}.`);
-    }
-}
+        button.addEventListener('click', validateForm)
+        function validateForm() {
+            console.log("validateForm clicked")
+            let emailvalue = email.value;
+            let namevalue = name.value;
+
+            const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+            console.log(emailvalue)
+            console.log(emailRegex.test(emailvalue))
+
+            //template literals
+            if (emailvalue == "") {
+                email.style = "border: 0.25rem solid orange;";
+                    alert(`An email adres is required. ${namevalue}.`);
+            }
+            else if (!emailRegex.test(emailvalue)) {
+                email.style = "border: 0.25rem solid orange;";
+                    alert(`The email adres must be a valid format ${namevalue}.`);
+            }
+          }
 ```
 
 ### 5. Gebruik van een constante
 Gebruik van een constante om de ID van de body van de huidige pagina op te slaan.
 ```javascript
-const currentPage = document.getElementsByTagName('body')[0].id;
+    const currentPage = document.getElementsByTagName('body')[0].id
 ```
 
 ### 6. Gebruik van template literals
 Gebruik van template literals voor string interpolatie.
 ```javascript
-alert(`Een e-mailadres is vereist, ${namevalue}.`);
+                    alert(`An email adres is required. ${namevalue}.`);
 ```
 
 ### 7. Destructuring
 Destructuring assignment om meerdere elementen uit de DOM te halen.
 ```javascript
-const [cnext, cprevious, gallerypic] = [
-    document.getElementById('cnext'), 
-    document.getElementById('cprevious'),
-    document.getElementById('gallerypicture')
-];
+        const [cnext, cprevious, gallerypic] = [
+            document.getElementById('cnext'), 
+            document.getElementById('cprevious'),
+            document.getElementById('gallerypicture')
+        ]
 ```
 
 ### 8. Spread & Rest operator
@@ -104,9 +112,40 @@ const spreadOperatorTest = [cnext, cprevious, gallerypic, ...galleryUrls];
 ### 9. Iteratie over een array
 Itereren over een array en elke URL naar de console loggen.
 ```javascript
-galleryUrls.forEach(url => {
-    console.log(url);
-});
+        let i = 0
+        //Iteratie over een array van urls voor de gallery
+        function galleryControls(direction, ...nuttelozeArgumentenOpgevangenDoorRestOperator) {
+            if (direction === "next") {
+                console.log("next i before" + i)
+                console.log(galleryUrls[i])
+
+                if (i >= galleryUrls.length-1) {
+                    i = 0;
+                } else {
+                    i++;
+                }
+                console.log("next i current" + i)
+
+                gallerypic.style.backgroundImage = galleryUrls[i]
+                gallerypic.style.transition = "0.25s"
+            } else if (direction === "previous"){
+                console.log("previous i before:" + i)
+                console.log(galleryUrls[i])
+                if (i <= 0) {
+                    i = galleryUrls.length-1;
+                } else {
+                    i--;
+                }
+                console.log("next i current" + i)
+
+                gallerypic.style.backgroundImage = galleryUrls[i]
+                gallerypic.style.transition = "0.25s"
+            }
+            if (nuttelozeArgumentenOpgevangenDoorRestOperator != "") {
+                //rest operator vangt extra argumenten op en logged ze in console
+                console.log(nuttelozeArgumentenOpgevangenDoorRestOperator)
+            }
+        }
 ```
 
 ### 10. Arrow function
@@ -124,31 +163,44 @@ ico.addEventListener('click', () => {
 ### 11. Callback function
 Toevoegen van een event listener met een callback functie.
 ```javascript
-function callbackAlternatief() {
-    galleryControls("previous");
-}
+//de arrow function is technisch de callback functie in dit geval
+        if (cnext) {
+            cnext.addEventListener('click', () => {
+                galleryControls("next")
+            })
+        }
 
-if(cprevious) {
-    cprevious.addEventListener('click', callbackAlternatief);
-}
+        //de "callbackAlternatief" is de callback functie
+        if(cprevious) {
+            cprevious.addEventListener('click', callbackAlternatief)
+        }
+
+        function callbackAlternatief() {
+            galleryControls("previous")
+        }
 ```
 
 ### 12. Promise
 Een willekeurige quote ophalen met een promise en deze resolven met een callback functie.
 ```javascript
-function fetchRandomQuote(functionNameCallBack) {
-    return new Promise(function(resolve) {
-        fetch("https://api.quotable.io/random")
-        .then(reply => reply.json())
-        .then(fetchedReplyAsJson => {
-            let quote = fetchedReplyAsJson.content;
-            let quoteAuthor = fetchedReplyAsJson.author;
-            resolve(quote + " - " + quoteAuthor);
-        });
-    }).then(function(quoteAndAuthor) {
-        functionNameCallBack(quoteAndAuthor);
-    });
-}
+    function fetchRandomQuote(functionNameCallBack) {
+        return new Promise(function(resolve) {
+            fetch("https://api.quotable.io/random")
+            .then(function(reply) {
+                return reply.json()
+            })
+            .then(function(fetchedReplyAsJson) {
+                //console.log(fetchedReplyAsJson)
+                let quote = fetchedReplyAsJson.content
+                let quoteAuthor = fetchedReplyAsJson.author
+                
+                //data is ontvangen en afgewerkt, promise state op 
+                resolve(quote + " - " + quoteAuthor)
+            })
+        }).then(function(quoteAndAuthor) {
+            functionNameCallBack(quoteAndAuthor)
+        })
+    }
 ```
 
 ### 13. Consumer methods
@@ -167,35 +219,57 @@ ico.addEventListener('click', () => {
 Weergegevens asynchroon ophalen en opslaan in local storage.
 ```javascript
 async function fetchWeatherData() {
-    let fetchWeatherData = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric');
-    let apiJson = await fetchWeatherData.json();
-    let jsonString = JSON.stringify(apiJson);
-    localStorage.setItem("apiJson", jsonString);
-    checkWeatherTimer();
-}
+        //https://openweathermap.org/forecast5
+        let fetchWeatherData = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
+        let apiJson = await fetchWeatherData.json()
+        let jsonString = JSON.stringify(apiJson);
+
+        //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
+        localStorage.setItem("apiJson", jsonString)
+        //console.log(apiJson)
+        checkWeatherTimer()
+    }
 ```
 
 ### 15. Zelf-uitvoerende functie
 Gebruik van een Immediately Invoked Function Expression (IIFE).
 ```javascript
+//self executing function als arrow function
 (() => {
-    // Jouw code hier
-})();
+    // code...
+})()
 ```
 
 ### 16. Fetch om data op te halen
 Data ophalen van een API en de response loggen.
 ```javascript
-fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    async function fetchWeatherData() {
+        //https://openweathermap.org/forecast5
+        let fetchWeatherData = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
+        let apiJson = await fetchWeatherData.json()
+        let jsonString = JSON.stringify(apiJson);
+
+        //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
+        localStorage.setItem("apiJson", jsonString)
+        //console.log(apiJson)
+        checkWeatherTimer()
+    }
 ```
 
 ### 17. JSON manipuleren en weergeven
 Parsen en loggen van JSON-data opgeslagen in local storage.
 ```javascript
-let apiJson = JSON.parse(localStorage.getItem("apiJson"));
-console.log(apiJson);
+async function fetchWeatherData() {
+        //https://openweathermap.org/forecast5
+        let fetchWeatherData = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=50.8413045&lon=4.3233332&appid=a6ed1c25557808a7b8f94d5bb5eac4a1&units=metric')
+        let apiJson = await fetchWeatherData.json()
+        let jsonString = JSON.stringify(apiJson);
+
+        //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
+        localStorage.setItem("apiJson", jsonString)
+        //console.log(apiJson)
+        checkWeatherTimer()
+    }
 ```
 
 ### 18. Basis CSS Animatie
@@ -211,22 +285,24 @@ Definiëren van een basis CSS-animatie voor een stuitereffect.
     100% {
         bottom: 2rem;
     }
-}
+  }
 ```
 
 ### 19. Gebruik van een flexbox of CSS grid
 Gebruik van Flexbox voor lay-out in een navigatiebalk.
 ```css
-header > nav {
+header div {
+    width: 100vw;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 ```
 
 ### 20. Gebruik van LocalStorage
 De huidige epoch tijd opslaan in local storage.
 ```javascript
-localStorage.setItem("epochTime", epochTime);
+localStorage.setItem("epochTime", epochTime)
 ```
 
 ## ChatGPT logs
