@@ -306,39 +306,39 @@ De huidige epoch tijd opslaan in local storage.
 ```
 
 ## ChatGPT logs
-chatgpt logs:
-readme generation:
+chatgpt logs:  
+readme generation:  
 https://chatgpt.com/share/1e7f1adf-fdd6-4e7d-bf13-302c4498eaf6  
 https://chatgpt.com/share/3b3e1a6f-2cf9-4a60-ba45-bb1f1863bb17  
 https://chatgpt.com/share/233c9747-f8e8-4554-99ed-8b6c7b1d9231  
 https://chatgpt.com/share/db7ed74e-ea6b-4cb5-9260-82b9b35818f1  
 https://chatgpt.com/share/ce90565f-270b-4237-9d37-606dda10da7a  
 
-Best practice project structure:
+Best practice project structure:  
 https://chatgpt.com/share/fee4ba1e-681f-4b0d-b4c2-62cdd6621a75  
 
-Detached HEAD:
+Detached HEAD:  
 https://chatgpt.com/share/541eb81f-f679-402a-93d2-1433b1683497  
 
-git commando om alle commit texts in een file te zetten en links extraction:
+git commando om alle commit texts in een file te zetten en links extraction:  
 https://chatgpt.com/share/611a1d13-834e-4d24-8d8a-7a39857129a9  
 
-Hulp bugfix button.addEventListener('click', validateForm()), hulp met alert() en style, en bugfix value detectie in email input:
+Hulp bugfix button.addEventListener('click', validateForm()), hulp met alert() en style, en bugfix value detectie in email input:  
 https://chatgpt.com/share/4d0514cb-0016-4888-9552-2de60aa5a101  
 
-API hulp Google Maps iframe:
+API hulp Google Maps iframe:  
 https://chatgpt.com/share/875bc340-f677-4407-8d21-d1ed5a0959bb  
 
-Hulp bugfix undefined voor JS document.getElementsByTagName('body'):
+Hulp bugfix undefined voor JS document.getElementsByTagName('body'):  
 https://chatgpt.com/share/e857bdf9-b76b-4f59-839a-d36c8f8246e9  
 
-Algemene software design principes met JavaScript voorbeelden:
+Algemene software design principes met JavaScript voorbeelden:  
 https://chatgpt.com/share/e3ae1b04-da5e-4382-a793-73581f5e05fe  
 
-Menu volgorde:
+Menu volgorde:  
 https://chatgpt.com/share/d2592906-f20c-4e85-bbd5-22b758a2f2ff  
 
-Dish Generation:
+Dish Generation:  
 https://chatgpt.com/share/27f1e608-d0c7-401d-bfac-234a15a73161  
 
 
