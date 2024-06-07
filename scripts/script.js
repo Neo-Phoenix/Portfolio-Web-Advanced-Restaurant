@@ -117,6 +117,29 @@
         weerDiv.appendChild(ptag)
     }
 
+    //Random quotes met een promise functie zonder arrow functions
+    // https://api.quotable.io/random
+    function fetchRandomQuote(functionNameCallBack) {
+        return new Promise(function(resolve) {
+            fetch("https://api.quotable.io/random")
+            .then(function(reply) {
+                return reply.json()
+            })
+            .then(function(fetchedReplyAsJson) {
+                //console.log(fetchedReplyAsJson)
+                let quote = fetchedReplyAsJson.content
+                let quoteAuthor = fetchedReplyAsJson.author
+                
+                //data is ontvangen en afgewerkt, promise state op 
+                resolve(quote + " - " + quoteAuthor)
+            })
+        }).then(function(quoteAndAuthor) {
+            functionNameCallBack(quoteAndAuthor)
+        })
+    }
+
+    fetchRandomQuote(answer => console.log(answer))
+
 })()
 
 
