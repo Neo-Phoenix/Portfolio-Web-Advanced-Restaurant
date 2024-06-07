@@ -20,13 +20,13 @@
 
         //JSON.stringify is nodig anders wordt LocalStorage.getItem log "[object Object]"
         localStorage.setItem("apiJson", jsonString)
-        console.log(apiJson)
+        //console.log(apiJson)
         checkWeatherTimer()
     }
 
     
     function checkWeatherTimer() {
-        console.log("found old epochTime stamp: "+localStorage.getItem("epochTime"))
+        //console.log("found old epochTime stamp: "+localStorage.getItem("epochTime"))
         let oldEpochTime = localStorage.getItem("epochTime")
         let currentEpochTime = Date.now()
         let differenceEpochTime = currentEpochTime-oldEpochTime
@@ -57,10 +57,10 @@
 
             //JSON parse de gestringified data zie comment hieronder over JSON.stringify
             data = JSON.parse(localStorage.getItem("apiJson"))
-            console.log(data.list)
+            //console.log(data.list)
             //access de lijst voor de komende 3 uur, 3 keer
 
-            console.log(data.list.length)
+            //console.log(data.list.length)
 
             //console.log(currentdate.getDate())
             JSONIterator(weerDiv)
@@ -92,26 +92,29 @@
             console.log(currentdate.getHours())
 
             //check of de dag hetzelfde is, simultaan of dat het uur hoger is dan huidig uur, en totaal maar 3 keer dit zal doen (voor de komende 3 weerberichten)
+            //console.log(dateDay===currentIdate.getDate())
+            //console.log(dateHour>currentdate.getHours())
             if (dateDay===currentIdate.getDate() && dateHour>currentdate.getHours()){
-                createDiv(dateHour, wdesc)
+                createDiv(dateHour, wdesc, weerDiv)
+                counter++
+
             }
             //als het dicht bij middernacht is check voorspellingen voor de volgende dag tot counter vol is
             else {
-                createDiv(dateHour, wdesc)
-            }
+                createDiv(dateHour, wdesc, weerDiv)
+                counter++
 
+            }
+            }
 
         }
     }
 
     
-    function createDiv(dateHour, wdesc) {
+    function createDiv(dateHour, wdesc, weerDiv) {
         const ptag = document.createElement("p");
         ptag.innerText = `At ${dateHour} 'o clock today the weather will have ${wdesc}`
         weerDiv.appendChild(ptag)
-        counter++
-    }
-
     }
 
 })()
